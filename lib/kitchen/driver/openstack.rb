@@ -372,6 +372,8 @@ module Kitchen
       end
 
       def wait_for_server(state)
+        state[:ssh_key] = config[:private_key_path]
+        state[:username] = config[:username]
         state[:hostname] = get_ip(state)
         if config[:winrm_wait]
           info "Sleeping for #{config[:winrm_wait]} seconds to let WinRM start up..." # rubocop:disable Metrics/LineLength
